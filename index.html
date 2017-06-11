@@ -70,9 +70,15 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li ng-class="{ active: isActive('/page1')}"><a href="page1">Page1 <span class="sr-only">(current)</span></a></li>
-                    <li ng-class="{ active: isActive('/page2')}"><a href="page2">Page2</a></li>
-                    <li><a href="#">Export</a></li>
+                    <li ng-class="{ active: isActive('/page1')}"><a href="page1"><span class="glyphicon glyphicon-tasks"></span> Page1 <span class="sr-only">(current)</span></a></li>
+                    <li ng-class="{ active: isActive('/page2')}"><a href="page2"><span class="glyphicon glyphicon-tasks"></span> Page2</a></li>
+                    <li><a href="#" data-toggle="collapse" data-target="#bakery" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-list-alt"></span> Bakery Management</a></li>
+                    <div class="collapse" id="bakery">
+                        <ul class="nav nav-subsidebar">
+                            <li ng-class="{ active: isActive('/bakery')}"><a href="bakery">- Bakery</a></li>
+                            <li ng-class="{ active: isActive('/bakerytype')}"><a href="bakerytype">- Bakery Type</a></li>
+                        </ul>
+                    </div>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2 main">

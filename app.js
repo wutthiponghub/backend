@@ -7,6 +7,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "page2/page2.html",
             controller: "page2Controller"
         })
+        .when("/bakery", {
+            templateUrl: "bakery/bakery.html",
+            controller: "bakeryController"
+        })
         .when("/page1", {
             templateUrl: "page1/page1.html",
             controller: "page1Controller"
