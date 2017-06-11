@@ -1,6 +1,5 @@
-<span></span>
-
-<table id="bakerytable" ng-init="loadData()" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<h2>Bakery</h2>
+<table id="bakerytable" ng-init="load()" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -20,20 +19,42 @@
         </tr>
     </tbody>
 </table>
-
-<div class="text-center" ng-init="h=190;w=70;">
+<p class="text-center">
+    <button ng-click="resetForm();show=true" type="button" class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-plus"></span> Add
+</button>
+    <button ng-click="resetForm()" type="button" class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-plus"></span> Load
+</button>
+</p>
+<div ng-if="show==true" class="inputForm">
     <form ng-submit="bmicalculator()">
-        <div class="form-group">
-            <label for="weight">Weight (KG)</label>
-            <input required type="number" ng-model="w" ng-change="bmicalculator()" class="form-control" id="weight" placeholder="Please input your weight (KG)">
+        <p class="text-center"><strong>Add Bakery</strong></p>
+        <div class="form-group" ng-if="edit==true">
+            <label for="id">ID</label>
+            <input readonly type="text" ng-model="tmp.id" class="form-control" id="id">
         </div>
         <div class="form-group">
-            <label for="height">Height (CM)</label>
-            <input required type="number" ng-model="h" ng-change="bmicalculator()" class="form-control" id="height" placeholder="Please input your height (KG)">
+            <label for="name">Name</label>
+            <input required type="text" ng-model="tmp.name" class="form-control" id="name" placeholder="Please input name">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-        <button type="button" ng-click="resetBMI()" class="btn btn-default">Reset</button>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input required type="number" ng-model="tmp.price" class="form-control" id="price" placeholder="Please input price">
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select class="form-control" required="required" ng-model="tmp.type">
+                      <option value="" disabled >-- Select --</option> 
+                      <option ng-repeat="option in bakerytype" value="{{option.id}}" >{{option.name}}</option>  
+            </select>
+        </div>
+        <div class="form-group">
+            <p class="text-center">
+                <button type="submit" ng-if="show==true && edit==false" ng-click="add(tmp)" class="btn btn-primary"> <span class="glyphicon glyphicon-plus"></span> Add </button>
+                <button type="submit" ng-if="edit" ng-click="update(tmp)" class="btn btn-primary"> <span class="glyphicon glyphicon-pencil"></span> Update </button>
+            </p>
+        </div>
     </form>
-    <h1 ng-if="bmi > 0 && bmi <= 100"> <span id="numberanimation" ng-bind="bmi | number:2"> </span> {{meaning}}</h1>
-    {{w / (h/100 * h/100) | number:2}}
 </div>
