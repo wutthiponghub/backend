@@ -4,8 +4,8 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
         .when("/", {
-            templateUrl: "page2/page2.html",
-            controller: "page2Controller"
+            templateUrl: "bakery/bakery.html",
+            controller: "bakeryController"
         })
         .when("/bakery", {
             templateUrl: "bakery/bakery.html",
@@ -37,6 +37,20 @@ app.service('bmidatajson', function($http, $q, $firebaseArray) {
     this.getDataFromFirebase = function() {
         var ref = firebase.database().ref().child("bmidata");
         return $firebaseArray(ref);
+    }
+});
+
+app.service('DBoperation', function($http, $q) {
+    this.getData = function(tablename) {
+        var deferred = $q.defer();
+        $http.get('https://www.appstudio.space/angularjs/workshop/api/dboperation.php?table=' + tablename)
+            .then(function(response) {
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                deferred.reject(response);
+            });
+        return deferred.promise;
     }
 });
 
