@@ -89,7 +89,22 @@ app.controller('bakeryController', function($scope, DBoperation) {
                 );
             }
         }
-
+        if (action == "edit") {
+            DBoperation.editData('bakery', 'id', tmp.id).then(
+                function(data) {
+                    $scope.resetForm();
+                    console.log(data);
+                    $scope.tmp = data[0];
+                    $scope.tmp.price = parseFloat($scope.tmp.price);
+                    $scope.show = true;
+                    $scope.edit = true;
+                    $scope.action = 'update';
+                },
+                function(error) {
+                    console.log(error);
+                }
+            );
+        }
 
     }
 

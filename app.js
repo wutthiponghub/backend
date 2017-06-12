@@ -52,6 +52,17 @@ app.service('DBoperation', function($http, $q) {
             });
         return deferred.promise;
     }
+    this.editData = function(tablename, primarykey, id) {
+        var deferred = $q.defer();
+        $http.get('https://www.appstudio.space/angularjs/workshop/api/dboperation.php?table=' + tablename + '&' + primarykey + '=' + id + '&primarykey=' + primarykey)
+            .then(function(response) {
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                deferred.reject(response);
+            });
+        return deferred.promise;
+    }
     this.addData = function(data) {
         var deferred = $q.defer();
         $http.post('https://www.appstudio.space/angularjs/workshop/api/dboperation.php', data)

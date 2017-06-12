@@ -14,7 +14,7 @@
             <td>{{data.price}}</td>
             <td>{{data.type}}</td>
             <td class="text-center" width="5%">
-                <span class="glyphicon glyphicon-edit"></span> <a ng-click="operation(data.id,'delete');"><span class="glyphicon glyphicon-trash"></span></a>
+                <a ng-click="operation(data,'edit')"><span class="glyphicon glyphicon-edit"></span></a> <a ng-click="operation(data.id,'delete');"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>
     </tbody>
@@ -41,7 +41,8 @@
 
 <div ng-if="show==true" class="inputForm">
     <form ng-submit="operation(tmp,action)">
-        <p class="text-center"><strong>Add Bakery</strong></p>
+        <p ng-if="edit==false" class="text-center"><strong>Add Bakery</strong></p>
+        <p ng-if="edit==true" class="text-center"><strong>Update Bakery</strong></p>
         <div class="form-group" ng-if="edit==true">
             <label for="id">ID</label>
             <input readonly type="text" ng-model="tmp.id" class="form-control" id="id">

@@ -21,8 +21,15 @@
     {
         $table = $_GET['table'];
 
-        $query="SELECT * FROM $table";
-
+		if(isset($_GET["primarykey"]) && $_GET["primarykey"] != "")
+		{
+			$query="SELECT * FROM $table WHERE ".$_GET["primarykey"]." = ".$_GET[$_GET["primarykey"]];
+		}
+		else
+		{
+			$query="SELECT * FROM $table";
+		}
+        
         $result = $conn->query($query) or die($conn->error.__LINE__);
 
         $arr = array();
