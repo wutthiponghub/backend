@@ -105,6 +105,25 @@ app.controller('bakeryController', function($scope, DBoperation) {
                 }
             );
         }
+        if (action == "update") {
+            tmp.table = "bakery";
+            tmp.action = "add";
+            tmp.primarykey = "id";
+            tmp.action = "update";
+            console.log(tmp);
+            DBoperation.updateData(tmp).then(
+                function(data) {
+                    console.log(data);
+                    $scope.resetForm();
+                    $scope.myTable.destroy();
+                    $scope.load();
+                },
+                function(error) {
+                    console.log(error);
+                }
+            );
+
+        }
 
     }
 

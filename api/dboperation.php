@@ -1,4 +1,3 @@
-
 <?php
     require_once("connectDB.php");
 
@@ -79,5 +78,28 @@
 
 		$query = 'INSERT INTO `'.$table.'`('.$values.') VALUES ('.$sets.');';
 		$conn->query($query) or die($conn->error.__LINE__);
-	}    
+	}  
+
+	if(isset($_POST['table']) && isset($_POST['id']) && isset($_POST['primarykey']) && $action == "update")
+	{
+		$table = $_POST['table'];
+		$id = $_POST['id'];
+		$primarykey = $_POST['primarykey'];
+
+		unset($_POST['table']);
+		unset($_POST['primarykey']);
+		unset($_POST['id']);
+
+		$sets = "";
+		foreach ($_POST as $k => $v) {
+			if(is_string($v)){ $v = "'".$v."'";}
+			else{ $v = '"'.$v.'"';}			
+			$sets .= '`'.$k.'`' . ' = ' . $v . ',';
+		}
+		$sets = substr($sets, 0, -1);
+
+		$query = 'UPDATE `'.$table.'` SET '. $sets .' WHERE '.$primarykey.'='.$id.';';
+		$conn->query($query) or die($conn->error.__LINE__);
+		
+	}  	  
 ?>
