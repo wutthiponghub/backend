@@ -63,6 +63,17 @@ app.service('DBoperation', function($http, $q) {
             });
         return deferred.promise;
     }
+    this.deleteData = function(data) {
+        var deferred = $q.defer();
+        $http.post('https://www.appstudio.space/angularjs/workshop/api/dboperation.php', data)
+            .then(function(response) {
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                deferred.reject(response);
+            });
+        return deferred.promise;
+    }
 });
 
 app.controller('navController', function($scope, $location) {
