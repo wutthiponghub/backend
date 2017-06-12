@@ -13,36 +13,36 @@ app.controller('bakeryController', function($scope, DBoperation) {
         $scope.tmp.type = '';
     };
 
+
     $scope.load = function() {
-        DBoperation.getData('bakery').then(
-            function(data) {
-                console.log(data);
-                $scope.bakery = data;
-
-                function filterColumn(i) {
-                    $('#bakerytable').DataTable().column(i).search(
-                        $('#col' + i + '_filter').val()
-                    ).draw();
-                }
-
-                $(document).ready(function() {
-                    $scope.myTable = $('#bakerytable').DataTable();
-                    $('input.column_filter').on('keyup click', function() {
-                        filterColumn($(this).attr('data-column'));
-                    });
-                    $('select.column_filter').on('keyup click', function() {
-                        filterColumn($(this).attr('data-column'));
-                    });
-                });
-            },
-            function(error) {
-                console.log(error);
-            }
-        );
         DBoperation.getData('bakerytype').then(
             function(data) {
                 console.log(data);
                 $scope.bakerytype = data;
+                DBoperation.getData('bakery').then(
+                    function(data) {
+                        console.log(data);
+                        $scope.bakery = data;
+
+                        function filterColumn(i) {
+                            $('#bakerytable').DataTable().column(i).search(
+                                $('#col' + i + '_filter').val()
+                            ).draw();
+                        }
+                        $(document).ready(function() {
+                            $scope.myTable = $('#bakerytable').DataTable();
+                            $('input.column_filter').on('keyup click', function() {
+                                filterColumn($(this).attr('data-column'));
+                            });
+                            $('select.column_filter').on('keyup click', function() {
+                                filterColumn($(this).attr('data-column'));
+                            });
+                        });
+                    },
+                    function(error) {
+                        console.log(error);
+                    }
+                );
             },
             function(error) {
                 console.log(error);

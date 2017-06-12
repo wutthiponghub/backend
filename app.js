@@ -98,6 +98,17 @@ app.service('DBoperation', function($http, $q) {
     }
 });
 
+app.filter('changeKeytoText', function() {
+    return function(tmp, data) {
+        for (i = 0; i < data.length; i++) {
+            if (data[i].id == tmp) {
+                return data[i].name;
+            }
+        }
+    }
+});
+
+
 app.controller('navController', function($scope, $location) {
     $scope.isActive = function(viewLocation) {
         return viewLocation === $location.path();

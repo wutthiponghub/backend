@@ -12,9 +12,9 @@
         <tr ng-repeat="data in bakery">
             <td>{{data.name}}</td>
             <td>{{data.price}}</td>
-            <td>{{data.type}}</td>
+            <td>{{data.type | changeKeytoText : bakerytype}}</td>
             <td class="text-center" width="5%">
-                <a ng-click="operation(data,'edit')"><span class="glyphicon glyphicon-edit"></span></a> <a ng-click="operation(data.id,'delete');"><span class="glyphicon glyphicon-trash"></span></a>
+                <a ng-click="operation(data,'edit')"><span class="glyphicon glyphicon-edit pointerlink"></span></a> <a ng-click="operation(data.id,'delete');"><span class="glyphicon glyphicon-trash pointerlink"></span></a>
             </td>
         </tr>
     </tbody>

@@ -175,3 +175,7 @@ body {
 code {
     font-size: 80%;
 }
+
+.pointerlink {
+    cursor: pointer;
+}
