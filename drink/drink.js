@@ -68,22 +68,8 @@ app.controller('drinkController', function($scope, FBoperation) {
             $scope.action = 'update';
         }
         if (action == "update") {
-            tmp.table = "bakery";
-            tmp.primarykey = "id";
-            tmp.action = "update";
-            console.log(tmp);
-            DBoperation.updateData(tmp).then(
-                function(data) {
-                    console.log(data);
-                    $scope.resetForm();
-                    $scope.myTable.destroy();
-                    $scope.load();
-                },
-                function(error) {
-                    console.log(error);
-                }
-            );
-
+            $scope.drink.$save(tmp);
+            $scope.resetForm();
         }
 
     }
