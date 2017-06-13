@@ -59,20 +59,13 @@ app.controller('drinkController', function($scope, FBoperation) {
         }
 
         if (action == "edit") {
-            DBoperation.editData('bakery', 'id', tmp.id).then(
-                function(data) {
-                    $scope.resetForm();
-                    console.log(data);
-                    $scope.tmp = data[0];
-                    $scope.tmp.price = parseFloat($scope.tmp.price);
-                    $scope.show = true;
-                    $scope.edit = true;
-                    $scope.action = 'update';
-                },
-                function(error) {
-                    console.log(error);
-                }
-            );
+            $scope.resetForm();
+            console.log(tmp);
+            $scope.tmp = tmp;
+            $scope.tmp.price = parseFloat($scope.tmp.price);
+            $scope.show = true;
+            $scope.edit = true;
+            $scope.action = 'update';
         }
         if (action == "update") {
             tmp.table = "bakery";
