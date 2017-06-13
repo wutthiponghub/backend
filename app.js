@@ -4,12 +4,16 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
         .when("/", {
-            templateUrl: "bakery/bakery.html",
-            controller: "bakeryController"
+            templateUrl: "bakerytype/bakerytype.html",
+            controller: "bakerytypeController"
         })
         .when("/bakery", {
             templateUrl: "bakery/bakery.html",
             controller: "bakeryController"
+        })
+        .when("/bakerytype", {
+            templateUrl: "bakerytype/bakerytype.html",
+            controller: "bakerytypeController"
         })
         .when("/page1", {
             templateUrl: "page1/page1.html",
@@ -39,6 +43,14 @@ app.service('bmidatajson', function($http, $q, $firebaseArray) {
         return $firebaseArray(ref);
     }
 });
+
+app.service('FBoperation', function($http, $q, $firebaseArray) {
+    this.getData = function(tablename) {
+        var ref = firebase.database().ref().child(tablename);
+        return $firebaseArray(ref);
+    }
+});
+
 
 app.service('DBoperation', function($http, $q) {
     this.getData = function(tablename) {
