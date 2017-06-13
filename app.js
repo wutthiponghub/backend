@@ -1,11 +1,13 @@
 var app = angular.module("myApp", ['ngRoute', 'firebase']);
 
 app.config(function($routeProvider, $locationProvider) {
+
+    var tmpcontroller;
     $locationProvider.html5Mode(true);
     $routeProvider
         .when("/", {
-            templateUrl: "bakerytype/bakerytype.html",
-            controller: "bakerytypeController"
+            templateUrl: "drink/drink.html",
+            controller: "drinkController"
         })
         .when("/bakery", {
             templateUrl: "bakery/bakery.html",
@@ -15,6 +17,14 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "bakerytype/bakerytype.html",
             controller: "bakerytypeController"
         })
+        .when("/drink", {
+            templateUrl: "drink/drink.html",
+            controller: "drinkController"
+        })
+        // .when("/drinktype", {
+        //     templateUrl: "drinktype/drinktype.html",
+        //     controller: "drinktypeController"
+        // })
         .when("/page1", {
             templateUrl: "page1/page1.html",
             controller: "page1Controller"
@@ -44,7 +54,7 @@ app.service('bmidatajson', function($http, $q, $firebaseArray) {
     }
 });
 
-app.service('FBoperation', function($http, $q, $firebaseArray) {
+app.service('FBoperation', function($firebaseArray) {
     this.getData = function(tablename) {
         var ref = firebase.database().ref().child(tablename);
         return $firebaseArray(ref);

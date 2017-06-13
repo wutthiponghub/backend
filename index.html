@@ -22,6 +22,8 @@
     <script src="page2/page2.js"></script>
     <script src="bakery/bakery.js"></script>
     <script src="bakerytype/bakerytype.js"></script>
+    <script src="drink/drink.js"></script>
+
 
     <!--Library-->
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -83,11 +85,21 @@
                 <ul class="nav nav-sidebar">
                     <li ng-class="{ active: isActive('/page1')}"><a href="page1"><span class="glyphicon glyphicon-tasks"></span> Page1 <span class="sr-only">(current)</span></a></li>
                     <li ng-class="{ active: isActive('/page2')}"><a href="page2"><span class="glyphicon glyphicon-tasks"></span> Page2</a></li>
-                    <li><a href="#" data-toggle="collapse" data-target="#bakery" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-list-alt"></span> Bakery Management</a></li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#bakery" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="glyphicon glyphicon-list-alt"></span> Bakery Management</a>
+                    </li>
                     <div class="collapse" id="bakery">
                         <ul class="nav nav-subsidebar">
                             <li ng-class="{ active: isActive('/bakery')}"><a href="bakery">- Bakery</a></li>
                             <li ng-class="{ active: isActive('/bakerytype')}"><a href="bakerytype">- Bakery Type</a></li>
+                        </ul>
+                    </div>
+                    <li><a href="#" data-toggle="collapse" data-target="#drink" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-list-alt"></span> Drink Management</a></li>
+                    <div class="collapse" id="drink">
+                        <ul class="nav nav-subsidebar">
+                            <li ng-class="{ active: isActive('/drink')}"><a href="drink">- Drink</a></li>
+                            <li ng-class="{ active: isActive('/drinktype')}"><a href="drinktype">- Drink Type</a></li>
                         </ul>
                     </div>
                 </ul>
