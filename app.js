@@ -6,8 +6,8 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     $routeProvider
         .when("/", {
-            templateUrl: "drink/drink.html",
-            controller: "drinkController"
+            templateUrl: "drinktype/drinktype.html",
+            controller: "drinktypeController"
         })
         .when("/bakery", {
             templateUrl: "bakery/bakery.html",
@@ -21,10 +21,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "drink/drink.html",
             controller: "drinkController"
         })
-        // .when("/drinktype", {
-        //     templateUrl: "drinktype/drinktype.html",
-        //     controller: "drinktypeController"
-        // })
+        .when("/drinktype", {
+            templateUrl: "drinktype/drinktype.html",
+            controller: "drinktypeController"
+        })
         .when("/page1", {
             templateUrl: "page1/page1.html",
             controller: "page1Controller"
