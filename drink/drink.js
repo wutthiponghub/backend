@@ -17,14 +17,11 @@ app.controller('drinkController', function($scope, FBoperation) {
     });
 
 
-
-
     $scope.resetForm = function() {
         $scope.show = false;
         $scope.edit = false;
         $scope.action = '';
         $scope.tmp = {};
-        $scope.tmp.id = '';
         $scope.tmp.name = '';
         $scope.tmp.price = '';
         $scope.tmp.type = '';
@@ -55,23 +52,10 @@ app.controller('drinkController', function($scope, FBoperation) {
 
 
 
-
     $scope.operation = function(tmp, action) {
         if (action == "add") {
-            tmp.table = "bakery";
-            tmp.action = "add";
-            DBoperation.addData(tmp).then(
-                function(data) {
-                    console.log(data);
-                    $scope.resetForm();
-                    $scope.myTable.destroy();
-                    $scope.load();
-
-                },
-                function(error) {
-                    console.log(error);
-                }
-            );
+            $scope.drink.$add(tmp);
+            $scope.resetForm();
         }
         if (action == "delete") {
             var r = confirm("Confirm to Delete!");
