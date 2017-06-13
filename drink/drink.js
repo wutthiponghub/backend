@@ -57,28 +57,7 @@ app.controller('drinkController', function($scope, FBoperation) {
             $scope.drink.$add(tmp);
             $scope.resetForm();
         }
-        if (action == "delete") {
-            var r = confirm("Confirm to Delete!");
-            if (r == true) {
-                dataDelete = {};
-                dataDelete.id = tmp;
-                dataDelete.primarykey = "id";
-                dataDelete.table = "bakery";
-                dataDelete.action = "delete";
-                console.log(dataDelete);
-                DBoperation.deleteData(dataDelete).then(
-                    function(data) {
-                        console.log(data);
-                        $scope.resetForm();
-                        $scope.myTable.destroy();
-                        $scope.load();
-                    },
-                    function(error) {
-                        console.log(error);
-                    }
-                );
-            }
-        }
+
         if (action == "edit") {
             DBoperation.editData('bakery', 'id', tmp.id).then(
                 function(data) {
